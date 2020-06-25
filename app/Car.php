@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Car extends Model
 {
-    public function autopark()
+    public function autoparks()
     {
-        return $this->belongsTo('App\Autopark');
+        return $this->belongsToMany('App\Autopark');
     }
 }

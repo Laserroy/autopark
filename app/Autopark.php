@@ -8,6 +8,6 @@ class Autopark extends Model
 {
     public function cars()
     {
-        return $this->hasMany('App\Car');
+        return $this->belongsToMany('App\Car');
     }
 }
