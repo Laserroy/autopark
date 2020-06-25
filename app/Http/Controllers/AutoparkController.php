@@ -14,7 +14,8 @@ class AutoparkController extends Controller
      */
     public function index()
     {
-        return view('autopark.index');
+        $autoparks = Autopark::all();
+        return view('autopark.index', compact('autoparks'));
     }
 
     /**

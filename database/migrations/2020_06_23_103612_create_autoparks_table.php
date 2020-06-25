@@ -17,7 +17,7 @@ class CreateAutoparksTable extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->string('adress');
-            $table->string('work_hours');
+            $table->string('work_hours')->nullable();
             $table->timestamps();
         });
     }

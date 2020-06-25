@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class AutoparksTableSeeder extends Seeder
+class CarsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,6 @@ class AutoparksTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Autopark::class, 15)->create();
+        factory(App\Car::class, 50)->create();
     }
 }
