@@ -8,6 +8,6 @@ use Faker\Generator as Faker;
 $factory->define(Autopark::class, function (Faker $faker) {
     return [
         'name' => $faker->unique()->company,
-        'adress' => $faker->unique()->address
+        'address' => $faker->unique()->address
     ];
 });

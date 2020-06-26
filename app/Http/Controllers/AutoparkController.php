@@ -47,7 +47,7 @@ class AutoparkController extends Controller
      */
     public function show(Autopark $autopark)
     {
-        //
+        return view('autopark.show', compact('autopark'));
     }
 
     /**

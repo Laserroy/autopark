@@ -4,11 +4,13 @@
 <div>
     <table>
         <th>Name</th>
-        <th>Adress</th>
+        <th>Address</th>
         @foreach($autoparks as $autopark)
         <tr>
-            <td>{{ $autopark->name }}</td>
-            <td>{{ $autopark->adress }}</td>
+            <td>
+                <a href="{{ route('autoparks.show', $autopark) }}">{{ $autopark->name }}</a>
+            </td>
+            <td>{{ $autopark->address }}</td>
         </tr>
         @endforeach
     </table>

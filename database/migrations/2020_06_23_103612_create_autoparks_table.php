@@ -16,7 +16,7 @@ class CreateAutoparksTable extends Migration
         Schema::create('autoparks', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
-            $table->string('adress');
+            $table->string('address');
             $table->string('work_hours')->nullable();
             $table->timestamps();
         });

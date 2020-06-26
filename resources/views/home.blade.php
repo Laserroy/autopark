@@ -14,7 +14,8 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    <a href="{{ route('autoparks.index') }}">Autoparks</a>
+                    <a href="{{ route('cars.index') }}">Cars</a>
                 </div>
             </div>
         </div>
