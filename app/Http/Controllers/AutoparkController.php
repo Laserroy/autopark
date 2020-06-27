@@ -25,7 +25,7 @@ class AutoparkController extends Controller
      */
     public function create()
     {
-        //
+        return view('autopark.create');
     }
 
     /**
@@ -36,7 +36,8 @@ class AutoparkController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
+        return redirect(route('home'));
     }
 
     /**
