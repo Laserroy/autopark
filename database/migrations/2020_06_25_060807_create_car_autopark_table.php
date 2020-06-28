@@ -13,7 +13,7 @@ class CreateCarAutoparkTable extends Migration
      */
     public function up()
     {
-        Schema::create('car_autopark', function (Blueprint $table) {
+        Schema::create('autopark_car', function (Blueprint $table) {
             $table->id();
             $table->integer('autopark_id')->unsigned();
             $table->integer('car_id')->unsigned();

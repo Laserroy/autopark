@@ -15,6 +15,12 @@
             <td>Hours</td>
             <td>{{ $autopark->work_hours }}</td>
         </tr>
+        <tr>
+            <td>Cars</td>
+            @foreach($autopark->cars as $car)
+            <td>|{{ $car->number }}----{{ $car->driver }}|</td>
+            @endforeach
+        </tr>
     </table>
 </div>
 @endsection

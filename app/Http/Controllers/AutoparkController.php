@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Autopark;
+use App\Car;
+use App\Http\Requests\StoreAutopark;
 use Illuminate\Http\Request;
 
 class AutoparkController extends Controller
@@ -34,9 +36,21 @@ class AutoparkController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreAutopark $request)
     {
-        dd($request->all());
+        $autopark = Autopark::create([
+            'name' => $request->input('name'),
+            'address' => $request->input('address'),
+            'work_hours' => $request->input('hours')
+        ]);
+        foreach ($request->input('cars') as $car) {
+            $newCar = Car::firstOrCreate(
+                ['number' => $car['number']],
+                ['number' => $car['number'], 'driver' => $car['driver']]
+            );
+            $autopark->cars()->attach($newCar->id);
+        }
+
         return redirect(route('home'));
     }
 
