@@ -26,7 +26,7 @@
                         @endforeach
                       </div>
                 </td>
-                <td>@mdo</td>
+                <td><a type="button" class="btn btn-warning" href="{{ route('autoparks.edit', $autopark) }}">edit</a></td>
             </tr>
         @endforeach
         </tbody>

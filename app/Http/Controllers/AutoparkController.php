@@ -73,7 +73,7 @@ class AutoparkController extends Controller
      */
     public function edit(Autopark $autopark)
     {
-        //
+        return view('autopark.edit', compact('autopark'));
     }
 
     /**
@@ -83,9 +83,23 @@ class AutoparkController extends Controller
      * @param  \App\Autopark  $autopark
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Autopark $autopark)
+    public function update(StoreAutopark $request, Autopark $autopark)
     {
-        //
+        foreach ($request->input('newCars') as $car) {
+            $newCar = Car::firstOrCreate(
+                ['number' => $car['number']],
+                ['number' => $car['number'], 'driver' => $car['driver']]
+            );
+            if (!$newCar->belongsTo($autopark)) {
+                $autopark->cars()->attach($newCar->id);
+            }
+        }
+        $autopark->save();
+
+        foreach ($request->input('updatedCars') as $car) {
+            Car::whereId($car['id'])->update(['number' => $car['number'], 'driver' => $car['driver']]);
+        }
+        return view('home');
     }
 
     /**
