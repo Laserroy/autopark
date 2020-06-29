@@ -110,6 +110,8 @@ class AutoparkController extends Controller
      */
     public function destroy(Autopark $autopark)
     {
-        //
+        $autopark->cars()->detach();
+        $autopark->delete();
+        return redirect(route('autoparks.index'));
     }
 }

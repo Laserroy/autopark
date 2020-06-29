@@ -21,5 +21,10 @@
             @endforeach
         </tbody>
       </table>
+      <form method="POST" action="{{route('autoparks.destroy', $autopark)}}">
+        @method('DELETE')
+        @csrf
+        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')" href="{{route('autoparks.destroy', $autopark)}}"><i class="fa fa-trash"></i></button>
+      </form>
 </div>
 @endsection
