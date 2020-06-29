@@ -13,12 +13,12 @@
           </tr>
         </thead>
         <tbody>
+            @foreach($autopark->cars as $car)
             <tr>
-                @foreach($autopark->cars as $car)
                 <td>{{ $car->number }}</td>
                 <td>{{ $car->driver }}</td>
-                @endforeach
             </tr>
+            @endforeach
         </tbody>
       </table>
 </div>

@@ -15,11 +15,16 @@
             <tr>
                 <td><a href="{{ route('autoparks.show', $autopark) }}">{{ $autopark->name }}</a></td>
                 <td>
-                    <ul>
+                    <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        show cars
+                      </button>
+                      <div class="dropdown-menu">
                         @foreach($autopark->cars as $car)
-                        <li>{{$car->number}}|{{$car->driver}}</li>
+                        <a class="dropdown-item" href="{{ route('cars.show', $car) }}"><i class="fas fa-car"></i>
+                            {{ $car->number }}
+                        </a>
                         @endforeach
-                    </ul>
+                      </div>
                 </td>
                 <td>@mdo</td>
             </tr>
