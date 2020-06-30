@@ -28,16 +28,14 @@
                     {{ $car->number }}
                 </td>
                 <td>
-                    <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        show autoparks
-                      </button>
-                      <div class="dropdown-menu">
+                    <ul class="list-group">
                         @foreach($car->autoparks as $autopark)
-                        <a class="dropdown-item" href="{{ route('autoparks.show', $autopark) }}"><i class="far fa-building"></i>
+                        <li class="list-group-item">
+                            <i class="far fa-building"></i>
                             {{ $autopark->name }}
-                        </a>
+                        </li>
                         @endforeach
-                      </div>
+                    </ul>
                 </td>
                 <td>
                     <div class="btn-group" role="group">

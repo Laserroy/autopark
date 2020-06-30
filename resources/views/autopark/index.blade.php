@@ -10,7 +10,7 @@
     <table class="table .table-bordered">
         <thead>
           <tr>
-            <th>Name</th>
+            <th>Autoparks</th>
             <th>Cars</th>
             <th>
                 <a type="button" class="btn btn-primary" href="{{ route('autoparks.create') }}">
@@ -23,18 +23,19 @@
         <tbody>
         @foreach($autoparks as $autopark)
             <tr>
-                <td>{{ $autopark->name }}</td>
                 <td>
-                    <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        show cars
-                      </button>
-                      <div class="dropdown-menu">
+                    <i class="far fa-building"></i>
+                    {{ $autopark->name }}
+                </td>
+                <td>
+                    <ul class="list-group">
                         @foreach($autopark->cars as $car)
-                        <a class="dropdown-item" href="{{ route('cars.show', $car) }}"><i class="fas fa-car"></i>
+                        <li class="list-group-item">
+                            <i class="fas fa-car"></i>
                             {{ $car->number }}
-                        </a>
+                        </li>
                         @endforeach
-                      </div>
+                    </ul>
                 </td>
                 <td>
                     <div class="btn-group" role="group">

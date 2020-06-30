@@ -111,7 +111,8 @@ class AutoparkController extends Controller
         }
         $autopark->save();
         $autopark->cars()->sync($carIdsForSync);
-        return view('home');
+
+        return redirect(route('autoparks.index'))->with('status', 'Autopark was updated');
     }
 
     /**
