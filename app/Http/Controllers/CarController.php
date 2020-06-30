@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Autopark;
 use App\Car;
 use App\Http\Requests\StoreCar;
 use App\Http\Requests\UpdateCar;
@@ -79,7 +80,14 @@ class CarController extends Controller
     {
         $number = $request->input('number');
         $driver = $request->input('driver');
+        $autoparksIDs = $request->input('autoparks');
         $car->update(['number' => $number, 'driver' => $driver]);
+        foreach ($autoparksIDs as $id) {
+            $autopark = Autopark::first($id);
+            if (!$car->autoparks->contains($id)) {
+                $car->autoparks()->attach($id);
+            }
+        }
 
         return redirect(route('cars.index'))->with('status', 'Car was updated');
     }
