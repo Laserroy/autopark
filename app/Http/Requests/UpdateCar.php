@@ -24,7 +24,8 @@ class UpdateCar extends FormRequest
     public function rules()
     {
         return [
-            //
+            'number' => 'min:6|max:10|unique:App\Car,number' . $this->car->id,
+            'driver' => 'required|max:256'
         ];
     }
 }

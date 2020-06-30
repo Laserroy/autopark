@@ -8,12 +8,13 @@
     </div>
     @endif
     <table class="table">
-        <thead class="thead-light">
+        <thead>
           <tr>
-            <th scope="col">Number</th>
-            <th scope="col">Autoparks</th>
-            <th scope="col">
+            <th>Number</th>
+            <th>Autoparks</th>
+            <th>
                 <a type="button" class="btn btn-primary" href="{{ route('cars.create') }}">
+                    <i class="fas fa-plus"></i>
                     Add new car
                 </a>
             </th>
@@ -22,7 +23,10 @@
         <tbody>
         @foreach($cars as $car)
             <tr>
-                <td><a href="{{ route('cars.show', $car) }}">{{ $car->number }}</a></td>
+                <td>
+                    <i class="fas fa-car" aria-hidden="true"></i>
+                    {{ $car->number }}
+                </td>
                 <td>
                     <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         show autoparks
@@ -35,7 +39,18 @@
                         @endforeach
                       </div>
                 </td>
-                <td>@mdo</td>
+                <td>
+                    <div class="btn-group" role="group">
+                        <a type="button" class="btn btn-info text-light" href="{{ route('cars.show', $car) }}"><i class="fas fa-eye"></i></a>
+                        <a type="button" class="btn btn-warning text-light" href="{{ route('cars.edit', $car) }}"><i class="fas fa-edit"></i>
+                        </a>
+                        <form method="POST" action="{{route('cars.destroy', $car)}}">
+                            @method('DELETE')
+                            @csrf
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')" href="{{route('cars.destroy', $car)}}"><i class="fas fa-trash"></i></button>
+                        </form>
+                    </div>
+                </td>
             </tr>
         @endforeach
         </tbody>

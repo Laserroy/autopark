@@ -2,18 +2,28 @@
 
 @section('content')
 <div class="container-fluid">
-    <table class="table">
-        <thead class="thead-light">
+    @if (session('status'))
+    <div class="alert alert-success">
+        {{ session('status') }}
+    </div>
+    @endif
+    <table class="table .table-bordered">
+        <thead>
           <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Cars</th>
-            <th scope="col">Action</th>
+            <th>Name</th>
+            <th>Cars</th>
+            <th>
+                <a type="button" class="btn btn-primary" href="{{ route('autoparks.create') }}">
+                    <i class="fas fa-plus"></i>
+                    Add new autopark
+                </a>
+            </th>
           </tr>
         </thead>
         <tbody>
         @foreach($autoparks as $autopark)
             <tr>
-                <td><a href="{{ route('autoparks.show', $autopark) }}">{{ $autopark->name }}</a></td>
+                <td>{{ $autopark->name }}</td>
                 <td>
                     <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         show cars
@@ -26,7 +36,17 @@
                         @endforeach
                       </div>
                 </td>
-                <td><a type="button" class="btn btn-warning" href="{{ route('autoparks.edit', $autopark) }}">edit</a></td>
+                <td>
+                    <div class="btn-group" role="group">
+                        <a type="button" class="btn btn-info text-light" href="{{ route('autoparks.show', $autopark) }}"><i class="fas fa-eye"></i></a>
+                        <a type="button" class="btn btn-warning text-light" href="{{ route('autoparks.edit', $autopark) }}"><i class="fas fa-edit"></i></a>
+                        <form method="POST" action="{{route('autoparks.destroy', $autopark)}}">
+                            @method('DELETE')
+                            @csrf
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')" href="{{route('autoparks.destroy', $autopark)}}"><i class="fa fa-trash"></i></button>
+                        </form>
+                    </div>
+                </td>
             </tr>
         @endforeach
         </tbody>

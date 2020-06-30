@@ -55,7 +55,7 @@ class AutoparkController extends Controller
             }
         }
 
-        return redirect(route('home'));
+        return redirect(route('autoparks.index'))->with('status', 'Autopark was created');
     }
 
     /**
