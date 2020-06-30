@@ -35,20 +35,25 @@ class UpdateAutopark extends FormRequest
 
         $updatedCarsNumbers = [];
 
-        foreach ($this->request->get('updatedCars') as $key => $val) {
-            $updatedCarsNumbers[] = $val['number'];
-            $rules['updatedCars.' .
-                $key .
-                '.number'] = ['required', 'distinct', 'unique:cars,number,' . $val['id']];
+        if ($this->request->get('updatedCars')) {
+            foreach ($this->request->get('updatedCars') as $key => $val) {
+                $updatedCarsNumbers[] = $val['number'];
+                $rules['updatedCars.' .
+                    $key .
+                    '.number'] = ['required', 'distinct', 'unique:cars,number,' . $val['id']];
+            }
         }
 
-        foreach ($this->request->get('newCars') as $key => $val) {
-            $rules['newCars.' . $key . '.number'] = [
-                'required',
-                'distinct',
-                Rule::unique('cars', 'number'),
-                Rule::notIn($updatedCarsNumbers)];
+        if ($this->request->get('newCars')) {
+            foreach ($this->request->get('newCars') as $key => $val) {
+                $rules['newCars.' . $key . '.number'] = [
+                    'required',
+                    'distinct',
+                    Rule::unique('cars', 'number'),
+                    Rule::notIn($updatedCarsNumbers)];
+            }
         }
+
         return $rules;
     }
 }

@@ -89,14 +89,15 @@ class AutoparkController extends Controller
      */
     public function update(UpdateAutopark $request, Autopark $autopark)
     {
+        $carIdsForSync = [];
+
         if ($request->input('updatedCars')) {
-            $carIdsForSync = [];
             foreach ($request->input('updatedCars') as $car) {
                 Car::whereId($car['id'])->update(['number' => $car['number'], 'driver' => $car['driver']]);
                 $carIdsForSync[] = $car['id'];
             }
-            $autopark->cars()->sync($carIdsForSync);
         }
+
         if ($request->input('newCars')) {
             foreach ($request->input('newCars') as $car) {
                 $newCar = Car::firstOrCreate(
@@ -105,10 +106,11 @@ class AutoparkController extends Controller
                 );
                 $newCar->save();
                 $newCar->update(['number' => $car['number'], 'driver' => $car['driver']]);
-                $autopark->cars()->attach($newCar->id);
+                $carIdsForSync[] = $newCar->id;
             }
         }
         $autopark->save();
+        $autopark->cars()->sync($carIdsForSync);
         return view('home');
     }
 

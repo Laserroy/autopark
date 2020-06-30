@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Car;
+use App\Http\Requests\StoreCar;
+use App\Http\Requests\UpdateCar;
 use Illuminate\Http\Request;
 
 class CarController extends Controller
@@ -25,7 +27,7 @@ class CarController extends Controller
      */
     public function create()
     {
-        //
+        return view('car.create');
     }
 
     /**
@@ -34,9 +36,14 @@ class CarController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCar $request)
     {
-        //
+        $number = $request->input('number');
+        $driver = $request->input('driver');
+
+        Car::create(['number' => $number, 'driver' => $driver]);
+
+        return redirect(route('cars.index'))->with('status', 'Car was created');
     }
 
     /**
@@ -68,7 +75,7 @@ class CarController extends Controller
      * @param  \App\Car  $car
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Car $car)
+    public function update(UpdateCar $request, Car $car)
     {
         //
     }

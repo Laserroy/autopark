@@ -2,12 +2,21 @@
 
 @section('content')
 <div class="container-fluid">
+    @if (session('status'))
+    <div class="alert alert-success">
+        {{ session('status') }}
+    </div>
+    @endif
     <table class="table">
         <thead class="thead-light">
           <tr>
             <th scope="col">Number</th>
             <th scope="col">Autoparks</th>
-            <th scope="col">Action</th>
+            <th scope="col">
+                <a type="button" class="btn btn-primary" href="{{ route('cars.create') }}">
+                    Add new car
+                </a>
+            </th>
           </tr>
         </thead>
         <tbody>
