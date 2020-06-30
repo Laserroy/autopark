@@ -33,10 +33,10 @@
                 @foreach($autopark->cars as $car)
                 <div class="form-group carInput">
                     <div class="row">
-                        <input type="hidden" name="updatedCars[{{ $loop->index }}][id]" value="{{ $car->id }}">
                         <div class="col">
                             <label for="carNumber">Number</label>
                             <input type="text" name="updatedCars[{{ $loop->index }}][number]" value="{{ $car->number }}" class="form-control" id="carNumber" aria-describedby="numberHelp">
+                            <input type="hidden" name="updatedCars[{{ $loop->index }}][id]" value="{{ $car->id }}">
                         </div>
                         <div class="col">
                             <label for="carDriver">Driver</label>
@@ -57,25 +57,26 @@
     </div>
 </div>
 <script type="text/javascript">
-    let counter = $('.carInput').length;
-    let deleteLimit = counter;
+    let counter = $('.carInput').length > 0 ? $('.carInput').length : 0;
 
     $("#addNewCarField").click(function () {
-        counter++;
         let newInputField = '<div class="form-group carInput">'+
                     '<div class="row">'+
                         '<div class="col">'+
+                            '<label for="carNumber">Number</label>'+
                             `<input type="text" name="newCars[${counter}][number]" class="form-control" id="carNumber" aria-describedby="numberHelp">`+
                         '</div>'+
                         '<div class="col">'+
+                            '<label for="carDriver">Driver</label>'+
                             `<input type="text" name="newCars[${counter}][driver]" class="form-control" id="carDriver" aria-describedby="driverHelp">`+
                         '</div>'+
                     '</div>'+
                 '</div>';
-        $(newInputField).insertAfter($(".carInput").last());
+        $(newInputField).insertBefore($("#addNewCarField"));
+        counter++;
 	    });
     $("#removeNewCarField").click(function () {
-        if (counter > deleteLimit) {
+        if ($('.carInput').length > 0) {
             counter--;
             $('.carInput').last().remove();
         }

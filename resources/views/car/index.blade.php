@@ -20,7 +20,7 @@
                       </button>
                       <div class="dropdown-menu">
                         @foreach($car->autoparks as $autopark)
-                        <a class="dropdown-item" href="{{ route('autoparks.show', $car) }}"><i class="far fa-building"></i>
+                        <a class="dropdown-item" href="{{ route('autoparks.show', $autopark) }}"><i class="far fa-building"></i>
                             {{ $autopark->name }}
                         </a>
                         @endforeach

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Autopark;
 use App\Car;
 use App\Http\Requests\StoreAutopark;
+use App\Http\Requests\UpdateAutopark;
 use Illuminate\Http\Request;
 
 class AutoparkController extends Controller
@@ -43,12 +44,15 @@ class AutoparkController extends Controller
             'address' => $request->input('address'),
             'work_hours' => $request->input('hours')
         ]);
-        foreach ($request->input('cars') as $car) {
-            $newCar = Car::firstOrCreate(
-                ['number' => $car['number']],
-                ['number' => $car['number'], 'driver' => $car['driver']]
-            );
-            $autopark->cars()->attach($newCar->id);
+
+        if ($request->input('cars')) {
+            foreach ($request->input('cars') as $car) {
+                $newCar = Car::firstOrCreate(
+                    ['number' => $car['number']],
+                    ['number' => $car['number'], 'driver' => $car['driver']]
+                );
+                $autopark->cars()->attach($newCar->id);
+            }
         }
 
         return redirect(route('home'));
@@ -83,22 +87,28 @@ class AutoparkController extends Controller
      * @param  \App\Autopark  $autopark
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreAutopark $request, Autopark $autopark)
+    public function update(UpdateAutopark $request, Autopark $autopark)
     {
-        foreach ($request->input('newCars') as $car) {
-            $newCar = Car::firstOrCreate(
-                ['number' => $car['number']],
-                ['number' => $car['number'], 'driver' => $car['driver']]
-            );
-            if (!$newCar->belongsTo($autopark)) {
+        if ($request->input('updatedCars')) {
+            $carIdsForSync = [];
+            foreach ($request->input('updatedCars') as $car) {
+                Car::whereId($car['id'])->update(['number' => $car['number'], 'driver' => $car['driver']]);
+                $carIdsForSync[] = $car['id'];
+            }
+            $autopark->cars()->sync($carIdsForSync);
+        }
+        if ($request->input('newCars')) {
+            foreach ($request->input('newCars') as $car) {
+                $newCar = Car::firstOrCreate(
+                    ['number' => $car['number']],
+                    ['number' => $car['number'], 'driver' => $car['driver']]
+                );
+                $newCar->save();
+                $newCar->update(['number' => $car['number'], 'driver' => $car['driver']]);
                 $autopark->cars()->attach($newCar->id);
             }
         }
         $autopark->save();
-
-        foreach ($request->input('updatedCars') as $car) {
-            Car::whereId($car['id'])->update(['number' => $car['number'], 'driver' => $car['driver']]);
-        }
         return view('home');
     }
 
