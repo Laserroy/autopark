@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,18 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Auth::routes();
-
-Route::get('/', 'HomeController@index')->name('home');
-
-Route::resource('/cars', 'CarController');
+Auth::routes(['verify' => false]);
 
 Route::group(
     [
         'prefix' => 'manager',
         'as' => 'manager.',
         'namespace' => 'Manager',
-        'middleware' => ['auth', 'can:manage'],
+        'middleware' => ['auth', 'can:manager'],
     ],
     function () {
         Route::resource('/autoparks', 'AutoparkController');
@@ -32,3 +29,7 @@ Route::group(
         Route::get('/', 'HomeController@index')->name('home');
     }
 );
+
+Route::get('/', 'HomeController@index')->name('home')->middleware('auth');
+
+Route::resource('/cars', 'CarController')->except(['destroy'])->middleware('auth');

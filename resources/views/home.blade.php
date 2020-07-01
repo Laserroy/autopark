@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-<p>STUB</p>
+<p>driver</p>
 @endsection

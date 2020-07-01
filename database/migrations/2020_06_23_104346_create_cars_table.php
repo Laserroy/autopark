@@ -17,6 +17,7 @@ class CreateCarsTable extends Migration
             $table->id();
             $table->string('number')->unique();
             $table->string('driver');
+            $table->integer('created_by')->nullable();
             $table->timestamps();
         });
     }

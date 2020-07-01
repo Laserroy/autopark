@@ -30,8 +30,12 @@ class AuthServiceProvider extends ServiceProvider
 
     private function registerPermissions()
     {
-        Gate::define('manage', function (User $user) {
+        Gate::define('manager', function (User $user) {
             return $user->isManager();
+        });
+
+        Gate::define('driver', function (User $user) {
+            return $user->isDriver();
         });
     }
 }
