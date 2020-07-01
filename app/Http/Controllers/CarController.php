@@ -42,7 +42,10 @@ class CarController extends Controller
         $number = $request->input('number');
         $driver = $request->input('driver');
 
-        Car::create(['number' => $number, 'driver' => $driver]);
+        $newCar = Car::create(['number' => $number, 'driver' => $driver]);
+
+        $autoparksIDs = $request->input('autoparks');
+        $newCar->autoparks()->sync($autoparksIDs);
 
         return redirect(route('cars.index'))->with('status', 'Car was created');
     }
@@ -66,7 +69,10 @@ class CarController extends Controller
      */
     public function edit(Car $car)
     {
-        return view('car.edit', compact('car'));
+        $allAutoparks = Autopark::all();
+        $collection = $allAutoparks->diff($car->autoparks);
+        $autoparksToAttach = $collection->all();
+        return view('car.edit', compact('car', 'autoparksToAttach'));
     }
 
     /**
@@ -80,14 +86,11 @@ class CarController extends Controller
     {
         $number = $request->input('number');
         $driver = $request->input('driver');
-        $autoparksIDs = $request->input('autoparks');
+        $autoparksAdd = $request->input('autoparksToAdd') ?? [];
+        $autoparksRemove = $request->input('autoparksToRemove') ?? [];
+        $autoparksForSync = array_merge($autoparksAdd, $autoparksRemove);
         $car->update(['number' => $number, 'driver' => $driver]);
-        foreach ($autoparksIDs as $id) {
-            $autopark = Autopark::first($id);
-            if (!$car->autoparks->contains($id)) {
-                $car->autoparks()->attach($id);
-            }
-        }
+        $car->autoparks()->toggle($autoparksForSync);
 
         return redirect(route('cars.index'))->with('status', 'Car was updated');
     }
