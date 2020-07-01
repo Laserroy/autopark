@@ -26,10 +26,10 @@
                 <a class="navbar-brand" href="{{ route('home') }}">
                     Home
                 </a>
-                <a class="navbar-brand" href="{{ route('autoparks.index') }}">
+                <a class="navbar-brand" href="{{ route('manager.autoparks.index') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
-                <a class="navbar-brand" href="{{ route('cars.index') }}">
+                <a class="navbar-brand" href="{{ route('manager.cars.index') }}">
                     Cars
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">

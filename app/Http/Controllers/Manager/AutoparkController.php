@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Manager;
 
 use App\Autopark;
 use App\Car;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreAutopark;
 use App\Http\Requests\UpdateAutopark;
 use Illuminate\Http\Request;
@@ -18,7 +19,7 @@ class AutoparkController extends Controller
     public function index()
     {
         $autoparks = Autopark::all();
-        return view('autopark.index', compact('autoparks'));
+        return view('manager.autopark.index', compact('autoparks'));
     }
 
     /**
@@ -28,7 +29,7 @@ class AutoparkController extends Controller
      */
     public function create()
     {
-        return view('autopark.create');
+        return view('manager.autopark.create');
     }
 
     /**
@@ -55,7 +56,7 @@ class AutoparkController extends Controller
             }
         }
 
-        return redirect(route('autoparks.index'))->with('status', 'Autopark was created');
+        return redirect(route('manager.autoparks.index'))->with('status', 'Autopark was created');
     }
 
     /**
@@ -66,7 +67,7 @@ class AutoparkController extends Controller
      */
     public function show(Autopark $autopark)
     {
-        return view('autopark.show', compact('autopark'));
+        return view('manager.autopark.show', compact('autopark'));
     }
 
     /**
@@ -77,7 +78,7 @@ class AutoparkController extends Controller
      */
     public function edit(Autopark $autopark)
     {
-        return view('autopark.edit', compact('autopark'));
+        return view('manager.autopark.edit', compact('autopark'));
     }
 
     /**
@@ -112,7 +113,7 @@ class AutoparkController extends Controller
         $autopark->save();
         $autopark->cars()->sync($carIdsForSync);
 
-        return redirect(route('autoparks.index'))->with('status', 'Autopark was updated');
+        return redirect(route('manager.autoparks.index'))->with('status', 'Autopark was updated');
     }
 
     /**
@@ -125,6 +126,6 @@ class AutoparkController extends Controller
     {
         $autopark->cars()->detach();
         $autopark->delete();
-        return redirect(route('autoparks.index'));
+        return redirect(route('manager.autoparks.index'));
     }
 }

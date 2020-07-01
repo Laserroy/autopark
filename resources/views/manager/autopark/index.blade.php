@@ -13,7 +13,7 @@
             <th>Autoparks</th>
             <th>Cars</th>
             <th>
-                <a type="button" class="btn btn-primary" href="{{ route('autoparks.create') }}">
+                <a type="button" class="btn btn-primary" href="{{ route('manager.autoparks.create') }}">
                     <i class="fas fa-plus"></i>
                     Add new autopark
                 </a>
@@ -39,12 +39,12 @@
                 </td>
                 <td>
                     <div class="btn-group" role="group">
-                        <a type="button" class="btn btn-info text-light" href="{{ route('autoparks.show', $autopark) }}"><i class="fas fa-eye"></i></a>
-                        <a type="button" class="btn btn-warning text-light" href="{{ route('autoparks.edit', $autopark) }}"><i class="fas fa-edit"></i></a>
-                        <form method="POST" action="{{route('autoparks.destroy', $autopark)}}">
+                        <a type="button" class="btn btn-info text-light" href="{{ route('manager.autoparks.show', $autopark) }}"><i class="fas fa-eye"></i></a>
+                        <a type="button" class="btn btn-warning text-light" href="{{ route('manager.autoparks.edit', $autopark) }}"><i class="fas fa-edit"></i></a>
+                        <form method="POST" action="{{route('manager.autoparks.destroy', $autopark)}}">
                             @method('DELETE')
                             @csrf
-                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')" href="{{route('autoparks.destroy', $autopark)}}"><i class="fa fa-trash"></i></button>
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')" href="{{route('manager.autoparks.destroy', $autopark)}}"><i class="fa fa-trash"></i></button>
                         </form>
                     </div>
                 </td>

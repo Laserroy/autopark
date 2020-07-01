@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <form method="POST" action="{{ route('cars.update', $car) }}">
+            <form method="POST" action="{{ route('manager.cars.update', $car) }}">
                 @csrf
                 @method('PATCH')
                 @if ($errors->any())

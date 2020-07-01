@@ -13,7 +13,7 @@
         <tbody>
             @foreach($car->autoparks as $autopark)
             <tr>
-                <td><a href="{{ route('autoparks.show', $autopark) }}"><i class="far fa-building"></i> {{ $autopark->name }}</a></td>
+                <td><a href="{{ route('manager.autoparks.show', $autopark) }}"><i class="far fa-building"></i> {{ $autopark->name }}</a></td>
             </tr>
             @endforeach
         </tbody>

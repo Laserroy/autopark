@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <form method="POST" action="{{ route('cars.store') }}">
+            <form method="POST" action="{{ route('manager.cars.store') }}">
                 @csrf
                 @if ($errors->any())
                     <div class="alert alert-danger">

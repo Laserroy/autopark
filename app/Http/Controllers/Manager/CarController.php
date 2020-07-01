@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Manager;
 
 use App\Autopark;
 use App\Car;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCar;
 use App\Http\Requests\UpdateCar;
 use Illuminate\Http\Request;
@@ -18,7 +19,7 @@ class CarController extends Controller
     public function index()
     {
         $cars = Car::all();
-        return view('car.index', compact('cars'));
+        return view('manager.car.index', compact('cars'));
     }
 
     /**
@@ -28,7 +29,7 @@ class CarController extends Controller
      */
     public function create()
     {
-        return view('car.create');
+        return view('manager.car.create');
     }
 
     /**
@@ -47,7 +48,7 @@ class CarController extends Controller
         $autoparksIDs = $request->input('autoparks');
         $newCar->autoparks()->sync($autoparksIDs);
 
-        return redirect(route('cars.index'))->with('status', 'Car was created');
+        return redirect(route('manager.cars.index'))->with('status', 'Car was created');
     }
 
     /**
@@ -58,7 +59,7 @@ class CarController extends Controller
      */
     public function show(Car $car)
     {
-        return view('car.show', compact('car'));
+        return view('manager.car.show', compact('car'));
     }
 
     /**
@@ -72,7 +73,7 @@ class CarController extends Controller
         $allAutoparks = Autopark::all();
         $collection = $allAutoparks->diff($car->autoparks);
         $autoparksToAttach = $collection->all();
-        return view('car.edit', compact('car', 'autoparksToAttach'));
+        return view('manager.car.edit', compact('car', 'autoparksToAttach'));
     }
 
     /**
@@ -92,7 +93,7 @@ class CarController extends Controller
         $car->update(['number' => $number, 'driver' => $driver]);
         $car->autoparks()->toggle($autoparksForSync);
 
-        return redirect(route('cars.index'))->with('status', 'Car was updated');
+        return redirect(route('manager.cars.index'))->with('status', 'Car was updated');
     }
 
     /**
@@ -106,6 +107,6 @@ class CarController extends Controller
         $car->autoparks()->detach();
         $car->delete();
 
-        return redirect(route('cars.index'))->with('status', 'Car was deleted');
+        return redirect(route('manager.cars.index'))->with('status', 'Car was deleted');
     }
 }

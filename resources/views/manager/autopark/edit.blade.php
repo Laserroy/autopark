@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <form method="POST" action="{{ route('autoparks.update', $autopark) }}">
+            <form method="POST" action="{{ route('manager.autoparks.update', $autopark) }}">
                 @method('PATCH')
                 @csrf
                 @if ($errors->any())

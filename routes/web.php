@@ -21,6 +21,15 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('/autoparks', 'AutoparkController');
-
-Route::resource('/cars', 'CarController');
+Route::group(
+    [
+        'prefix' => 'manager',
+        'as' => 'manager.',
+        'namespace' => 'Manager',
+       // 'middleware' => ['auth', 'can:manage'],
+    ],
+    function () {
+        Route::resource('/autoparks', 'AutoparkController');
+        Route::resource('/cars', 'CarController');
+    }
+);
