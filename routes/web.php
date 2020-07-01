@@ -13,23 +13,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
+
+Route::resource('/cars', 'CarController');
 
 Route::group(
     [
         'prefix' => 'manager',
         'as' => 'manager.',
         'namespace' => 'Manager',
-       // 'middleware' => ['auth', 'can:manage'],
+        'middleware' => ['auth', 'can:manage'],
     ],
     function () {
         Route::resource('/autoparks', 'AutoparkController');
         Route::resource('/cars', 'CarController');
+        Route::get('/', 'HomeController@index')->name('home');
     }
 );

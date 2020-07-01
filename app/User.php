@@ -25,4 +25,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function isManager()
+    {
+        return $this->role === self::ROLE_MANAGER;
+    }
+
+    public function isDriver()
+    {
+        return $this->role === self::ROLE_DRIVER;
+    }
 }
