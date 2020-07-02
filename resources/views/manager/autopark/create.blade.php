@@ -15,17 +15,17 @@
                         </ul>
                     </div>
                 @endif
-                <h1>Autopark</h1>
+                <h1>{{ 'autopark.autopark' }}</h1>
                 <div class="form-group">
-                  <label for="autoparkName">Name</label>
+                  <label for="autoparkName">{{ 'autopark.name' }}</label>
                   <input type="text" name="name" value="{{ old('name') }}" class="form-control" id="autoparkName" aria-describedby="nameHelp" placeholder="Enter name">
                 </div>
                 <div class="form-group">
-                    <label for="autoparkAddress">Address</label>
+                    <label for="autoparkAddress">{{ 'autopark.address' }}</label>
                     <input type="text" name="address" value="{{ old('address') }}" class="form-control" id="autoparkAddress" aria-describedby="addressHelp" placeholder="Enter address">
                 </div>
                 <div class="form-group">
-                    <label for="autoparkHours">Working hours</label>
+                    <label for="autoparkHours">{{ 'autopark.hours' }}</label>
                     <input type="text" name="hours" value="{{ old('hours') }}" class="form-control" id="autoparkHours" aria-describedby="hoursHelp" placeholder="Enter working time">
                 </div>
                 <h3>Cars</h3>
@@ -34,8 +34,7 @@
                 <button type="button" id="removeNewCarField" class="btn btn-danger"><i class="fa fa-minus" aria-hidden="true"></i>
                 </button>
                 <button type="submit" class="btn btn-primary float-right">
-                    <i class="far fa-save"></i></i>
-                    Save</button>
+                    {{ 'autopark.save' }}</button>
             </form>
         </div>
     </div>
