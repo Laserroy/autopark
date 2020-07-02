@@ -10,12 +10,12 @@
     <table class="table">
         <thead>
           <tr>
-            <th>Number</th>
-            <th>Autoparks</th>
+            <th>{{ 'car.number' }}</th>
+            <th>{{ 'autoparks.autoparks' }}</th>
             <th>
                 <a type="button" class="btn btn-primary" href="{{ route('manager.cars.create') }}">
                     <i class="fas fa-plus"></i>
-                    Add new car
+                    {{ 'car.new_car' }}
                 </a>
             </th>
           </tr>

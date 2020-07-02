@@ -16,19 +16,30 @@
                         </ul>
                     </div>
                 @endif
-                <h1>Car</h1>
+                <h1>{{ 'car.car' }}</h1>
                 <p>{{ $car->number }}</p>
                 <div class="form-group">
-                  <label for="carNumber">Number</label>
-                  <input type="text" name="number" value="{{ old('number') ?? $car->number }}" class="form-control" aria-describedby="nameHelp" placeholder="Enter car number">
+                  <label for="carNumber">{{ 'car.number' }}</label>
+                  <input type="text"
+                         name="number"
+                         value="{{ old('number') ?? $car->number }}"
+                         class="form-control"
+                         aria-describedby="nameHelp"
+                         placeholder="Enter car number">
                 </div>
                 <div class="form-group">
-                    <label for="carDriver">Driver</label>
-                    <input type="text" name="driver" value="{{ old('driver') ?? $car->driver }}" class="form-control" aria-describedby="addressHelp" placeholder="Enter driver`s name">
+                    <label for="carDriver">{{ 'car.driver' }}</label>
+                    <input type="text"
+                           name="driver"
+                           value="{{ old('driver') ?? $car->driver }}"
+                           class="form-control"
+                           aria-describedby="addressHelp"
+                           placeholder="Enter driver`s name">
                 </div>
                 <button type="submit" class="btn btn-primary">
                     <i class="far fa-save"></i></i>
-                    Save</button>
+                    {{ 'car.save' }}
+                </button>
             </form>
         </div>
     </div>

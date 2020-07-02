@@ -17,16 +17,27 @@
                 @endif
                 <h1>Car</h1>
                 <div class="form-group">
-                  <label for="carNumber">Number</label>
-                  <input type="text" name="number" value="{{ old('number') }}" class="form-control" aria-describedby="nameHelp" placeholder="Enter car number">
+                  <label for="carNumber">{{ __('car.number') }}</label>
+                  <input type="text"
+                         name="number"
+                         value="{{ old('number') }}"
+                         class="form-control"
+                         aria-describedby="nameHelp"
+                         placeholder="Enter car number">
                 </div>
                 <div class="form-group">
-                    <label for="carDriver">Driver</label>
-                    <input type="text" name="driver" value="{{ old('driver') }}" class="form-control" aria-describedby="addressHelp" placeholder="Enter driver`s name">
+                    <label for="carDriver">{{ 'car.driver' }}</label>
+                    <input type="text"
+                           name="driver"
+                           value="{{ old('driver') }}"
+                           class="form-control"
+                           aria-describedby="addressHelp"
+                           placeholder="Enter driver`s name">
                 </div>
                 <button type="submit" class="btn btn-primary">
                     <i class="far fa-save"></i></i>
-                    Create</button>
+                    {{ 'car.create' }}
+                </button>
             </form>
         </div>
     </div>
