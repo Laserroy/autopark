@@ -10,12 +10,12 @@
     <table class="table .table-bordered">
         <thead>
           <tr>
-            <th>Autoparks</th>
-            <th>Cars</th>
+            <th>{{ __('autopark.autoparks') }}</th>
+            <th>{{ __('car.cars') }}</th>
             <th>
                 <a type="button" class="btn btn-primary" href="{{ route('manager.autoparks.create') }}">
                     <i class="fas fa-plus"></i>
-                    Add new autopark
+                    {{ __('autopark.new') }}
                 </a>
             </th>
           </tr>
@@ -44,7 +44,7 @@
                         <form method="POST" action="{{route('manager.autoparks.destroy', $autopark)}}">
                             @method('DELETE')
                             @csrf
-                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')" href="{{route('manager.autoparks.destroy', $autopark)}}"><i class="fa fa-trash"></i></button>
+                            <button type="submit" class="btn btn-danger" onclick="return confirm(__('app.sure'))" href="{{route('manager.autoparks.destroy', $autopark)}}"><i class="fa fa-trash"></i></button>
                         </form>
                     </div>
                 </td>

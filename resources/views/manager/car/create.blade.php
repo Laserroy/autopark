@@ -15,24 +15,24 @@
                         </ul>
                     </div>
                 @endif
-                <h1>Car</h1>
+                <h1>{{ __('car.car') }}</h1>
                 <div class="form-group">
-                  <label for="carNumber">{{ 'car.number' }}</label>
+                  <label for="carNumber">{{ __('car.number') }}</label>
                   <input type="text" name="number" value="{{ old('number') }}" class="form-control" aria-describedby="nameHelp" placeholder="Enter car number">
                 </div>
                 <div class="form-group">
-                    <label for="carDriver">{{ 'car.driver' }}</label>
+                    <label for="carDriver">{{ __('car.driver') }}</label>
                     <input type="text" name="driver" value="{{ old('driver') }}" class="form-control" aria-describedby="addressHelp" placeholder="Enter driver`s name">
                 </div>
                 <div class="form-group">
-                    <label for="autoparkSelect">{{ 'autopark.attach' }}</label>
+                    <label for="autoparkSelect">{{ __('autopark.attach') }}</label>
                     <select multiple size="10" name="autoparks[]" class="form-control selectpicker" id="autoparkSelect">
                         @foreach(App\Autopark::all() as $autopark)
                         <option value="{{ $autopark->id }}">{{ $autopark->name }}</option>
                         @endforeach
                     </select>
                 </div>
-                <button type="submit" class="btn btn-primary">{{ 'car.create' }}</button>
+                <button type="submit" class="btn btn-primary">{{ __('car.create') }}</button>
             </form>
         </div>
     </div>

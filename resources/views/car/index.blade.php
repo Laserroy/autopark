@@ -10,12 +10,12 @@
     <table class="table">
         <thead>
           <tr>
-            <th>{{ 'car.number' }}</th>
-            <th>{{ 'autopark.autoparks' }}</th>
+            <th>{{ __('car.number') }}</th>
+            <th>{{ __('autopark.autoparks') }}</th>
             <th>
                 <a type="button" class="btn btn-primary" href="{{ route('cars.create') }}">
                     <i class="fas fa-plus"></i>
-                    {{ 'car.new_car' }}
+                    {{ __('car.new_car') }}
                 </a>
             </th>
           </tr>

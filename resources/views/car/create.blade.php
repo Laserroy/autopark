@@ -26,7 +26,7 @@
                          placeholder="Enter car number">
                 </div>
                 <div class="form-group">
-                    <label for="carDriver">{{ 'car.driver' }}</label>
+                    <label for="carDriver">{{ __('car.driver') }}</label>
                     <input type="text"
                            name="driver"
                            value="{{ old('driver') }}"
@@ -36,7 +36,7 @@
                 </div>
                 <button type="submit" class="btn btn-primary">
                     <i class="far fa-save"></i></i>
-                    {{ 'car.create' }}
+                    {{ __('car.create') }}
                 </button>
             </form>
         </div>

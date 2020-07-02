@@ -10,12 +10,12 @@
     <table class="table">
         <thead>
           <tr>
-            <th>{{ 'car.number' }}</th>
-            <th>{{ 'autoparks.autoparks' }}</th>
+            <th>{{ __('car.number') }}</th>
+            <th>{{ __('autoparks.autoparks') }}</th>
             <th>
                 <a type="button" class="btn btn-primary" href="{{ route('manager.cars.create') }}">
                     <i class="fas fa-plus"></i>
-                    {{ 'car.new_car' }}
+                    {{ __('car.new_car') }}
                 </a>
             </th>
           </tr>
@@ -45,7 +45,7 @@
                         <form method="POST" action="{{route('manager.cars.destroy', $car)}}">
                             @method('DELETE')
                             @csrf
-                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')" href="{{route('manager.cars.destroy', $car)}}"><i class="fas fa-trash"></i></button>
+                            <button type="submit" class="btn btn-danger" onclick="return confirm(__('app.sure'))" href="{{route('manager.cars.destroy', $car)}}"><i class="fas fa-trash"></i></button>
                         </form>
                     </div>
                 </td>

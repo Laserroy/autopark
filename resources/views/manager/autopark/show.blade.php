@@ -8,8 +8,8 @@
     <table class="table w-50 mx-auto">
         <thead class="thead-light">
           <tr>
-            <th scope="col">Number</th>
-            <th scope="col">Driver</th>
+            <th scope="col">{{ __('car.number') }}</th>
+            <th scope="col">{{ __('car.driver') }}</th>
           </tr>
         </thead>
         <tbody>

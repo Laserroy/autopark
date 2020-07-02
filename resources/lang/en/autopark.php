@@ -8,5 +8,6 @@ return [
     'name' => 'Name',
     'address' => 'Address',
     'hours' => 'Working hours',
-    'save' => 'Save'
+    'save' => 'Save',
+    'new' => 'Add new autopark'
 ];

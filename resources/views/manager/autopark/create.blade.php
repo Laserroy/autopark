@@ -15,26 +15,26 @@
                         </ul>
                     </div>
                 @endif
-                <h1>{{ 'autopark.autopark' }}</h1>
+                <h1>{{ __('autopark.autopark') }}</h1>
                 <div class="form-group">
-                  <label for="autoparkName">{{ 'autopark.name' }}</label>
-                  <input type="text" name="name" value="{{ old('name') }}" class="form-control" id="autoparkName" aria-describedby="nameHelp" placeholder="Enter name">
+                  <label for="autoparkName">{{ __('autopark.name') }}</label>
+                  <input type="text" name="name" value="{{ old('name') }}" class="form-control" id="autoparkName" aria-describedby="nameHelp">
                 </div>
                 <div class="form-group">
-                    <label for="autoparkAddress">{{ 'autopark.address' }}</label>
-                    <input type="text" name="address" value="{{ old('address') }}" class="form-control" id="autoparkAddress" aria-describedby="addressHelp" placeholder="Enter address">
+                    <label for="autoparkAddress">{{ __('autopark.address') }}</label>
+                    <input type="text" name="address" value="{{ old('address') }}" class="form-control" id="autoparkAddress" aria-describedby="addressHelp">
                 </div>
                 <div class="form-group">
-                    <label for="autoparkHours">{{ 'autopark.hours' }}</label>
-                    <input type="text" name="hours" value="{{ old('hours') }}" class="form-control" id="autoparkHours" aria-describedby="hoursHelp" placeholder="Enter working time">
+                    <label for="autoparkHours">{{ __('autopark.hours') }}</label>
+                    <input type="text" name="hours" value="{{ old('hours') }}" class="form-control" id="autoparkHours" aria-describedby="hoursHelp">
                 </div>
-                <h3>Cars</h3>
+                <h3>{{ __('car.cars') }}</h3>
                 <button type="button" id="addNewCarField" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i>
                 </button>
                 <button type="button" id="removeNewCarField" class="btn btn-danger"><i class="fa fa-minus" aria-hidden="true"></i>
                 </button>
                 <button type="submit" class="btn btn-primary float-right">
-                    {{ 'autopark.save' }}</button>
+                    {{ __('autopark.save') }}</button>
             </form>
         </div>
     </div>
