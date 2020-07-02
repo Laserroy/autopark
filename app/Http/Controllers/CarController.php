@@ -44,7 +44,7 @@ class CarController extends Controller
         $number = $request->input('number');
         $driver = $request->input('driver');
         $user = Auth::user();
-        $car = Car::create([
+        Car::create([
             'number' => $number,
             'driver' => $driver,
             'created_by' => $user->id

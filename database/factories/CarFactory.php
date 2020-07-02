@@ -7,7 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Car::class, function (Faker $faker) {
     return [
-        'number' => $faker->unique()->word,
+        'number' => $faker->randomNumber(6),
         'driver' => $faker->name
     ];
 });
