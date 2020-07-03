@@ -14,24 +14,21 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Validate composer.json and composer.lock
-      run: composer validate
-      
-    - name: Cache Composer packages
-      id: composer-cache
-      uses: actions/cache@v2
+    - name: Install PHP
+      uses: shivammathur/setup-php@v2
       with:
-        path: vendor
-        key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-php-
+        extensions: mbstring, curl, dom, xml, zip, sqlite
+        tools: prestissimo
+        php-version: '7.4'
 
-    - name: Install dependencies
-      if: steps.composer-cache.outputs.cache-hit != 'true'
-      run: composer install --prefer-dist --no-progress --no-suggest
+    - name: PHP Security Checker
+      uses: StephaneBour/actions-php-security-checker@1.0
+
+    - name: Setup project
+      run: make setup
+
+    - name: Check lint
+      run: make lint
 
     - name: Run test suite
       run: make test
-      
-    - name: Run linter
-      run: make lint
