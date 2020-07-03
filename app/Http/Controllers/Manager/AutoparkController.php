@@ -90,8 +90,13 @@ class AutoparkController extends Controller
      */
     public function update(UpdateAutopark $request, Autopark $autopark)
     {
-        $carIdsForSync = [];
+        $autopark->update([
+            'name' => $request->input('name'),
+            'address' => $request->input('address'),
+            'work_hours' => $request->input('hours')
+        ]);
 
+        $carIdsForSync = [];
         if ($request->input('updatedCars')) {
             foreach ($request->input('updatedCars') as $car) {
                 Car::whereId($car['id'])->update(['number' => $car['number'], 'driver' => $car['driver']]);
