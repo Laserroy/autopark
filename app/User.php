@@ -22,6 +22,10 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    protected $attributes = [
+        'role' => self::ROLE_DRIVER,
+    ];
+
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];

@@ -15,15 +15,14 @@
                         </ul>
                     </div>
                 @endif
-                <h1>Car</h1>
+                <h1>{{ __('car.car') }}</h1>
                 <div class="form-group">
                   <label for="carNumber">{{ __('car.number') }}</label>
                   <input type="text"
                          name="number"
                          value="{{ old('number') }}"
                          class="form-control"
-                         aria-describedby="nameHelp"
-                         placeholder="Enter car number">
+                         aria-describedby="nameHelp">
                 </div>
                 <div class="form-group">
                     <label for="carDriver">{{ __('car.driver') }}</label>
@@ -31,8 +30,7 @@
                            name="driver"
                            value="{{ old('driver') }}"
                            class="form-control"
-                           aria-describedby="addressHelp"
-                           placeholder="Enter driver`s name">
+                           aria-describedby="addressHelp">
                 </div>
                 <button type="submit" class="btn btn-primary">
                     <i class="far fa-save"></i></i>
