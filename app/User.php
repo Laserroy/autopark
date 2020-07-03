@@ -40,6 +40,11 @@ class User extends Authenticatable
         return $this->role === self::ROLE_DRIVER;
     }
 
+    public function setAsManager()
+    {
+        $this->update(['role' => self::ROLE_MANAGER]);
+    }
+
     public function createdCars()
     {
         return $this->hasMany('App\Car', 'created_by');
