@@ -28,7 +28,7 @@
                     {{ __('app.home') }}
                 </a>
                 <a class="navbar-brand" href="{{ route('manager.autoparks.index') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ __('autopark.autoparks') }}
                 </a>
                 <a class="navbar-brand" href="{{ route('manager.cars.index') }}">
                     {{ __('car.cars') }}

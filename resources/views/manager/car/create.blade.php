@@ -18,11 +18,11 @@
                 <h1>{{ __('car.car') }}</h1>
                 <div class="form-group">
                   <label for="carNumber">{{ __('car.number') }}</label>
-                  <input type="text" name="number" value="{{ old('number') }}" class="form-control" aria-describedby="nameHelp" placeholder="Enter car number">
+                  <input type="text" name="number" value="{{ old('number') }}" class="form-control" aria-describedby="nameHelp">
                 </div>
                 <div class="form-group">
                     <label for="carDriver">{{ __('car.driver') }}</label>
-                    <input type="text" name="driver" value="{{ old('driver') }}" class="form-control" aria-describedby="addressHelp" placeholder="Enter driver`s name">
+                    <input type="text" name="driver" value="{{ old('driver') }}" class="form-control" aria-describedby="addressHelp">
                 </div>
                 <div class="form-group">
                     <label for="autoparkSelect">{{ __('autopark.attach') }}</label>
