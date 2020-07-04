@@ -19,15 +19,15 @@
                 <h1>{{ __('autopark.autopark') }}</h1>
                 <div class="form-group">
                   <label for="autoparkName">{{ __('autopark.name') }}</label>
-                  <input type="text" name="name" value="{{ $autopark->name }}" class="form-control" id="autoparkName" aria-describedby="nameHelp" placeholder="Enter name">
+                  <input type="text" name="name" value="{{ $autopark->name }}" class="form-control" id="autoparkName" aria-describedby="nameHelp">
                 </div>
                 <div class="form-group">
                     <label for="autoparkAddress">{{ __('autopark.address') }}</label>
-                    <input type="text" name="address" value="{{ $autopark->address }}" class="form-control" id="autoparkAddress" aria-describedby="addressHelp" placeholder="Enter address">
+                    <input type="text" name="address" value="{{ $autopark->address }}" class="form-control" id="autoparkAddress" aria-describedby="addressHelp">
                 </div>
                 <div class="form-group">
                     <label for="autoparkHours">{{ __('autopark.hours') }}</label>
-                    <input type="text" name="hours" value="{{ $autopark->work_hours }}" class="form-control" id="autoparkHours" aria-describedby="hoursHelp" placeholder="Enter working time">
+                    <input type="text" name="hours" value="{{ $autopark->work_hours }}" class="form-control" id="autoparkHours" aria-describedby="hoursHelp">
                 </div>
                 <h3>{{ __('car.cars') }}</h3>
                 @foreach($autopark->cars as $car)
@@ -63,11 +63,11 @@
         let newInputField = '<div class="form-group carInput">'+
                     '<div class="row">'+
                         '<div class="col">'+
-                            '<label for="carNumber">Number</label>'+
+                            '<label for="carNumber">{{__('car.number')}}</label>'+
                             `<input type="text" name="newCars[${counter}][number]" class="form-control" id="carNumber" aria-describedby="numberHelp">`+
                         '</div>'+
                         '<div class="col">'+
-                            '<label for="carDriver">Driver</label>'+
+                            '<label for="carDriver">{{__('car.driver')}}</label>'+
                             `<input type="text" name="newCars[${counter}][driver]" class="form-control" id="carDriver" aria-describedby="driverHelp">`+
                         '</div>'+
                     '</div>'+

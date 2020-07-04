@@ -41,8 +41,8 @@
 </div>
 <script type="text/javascript">
     let counter = 0;
-    let numberLabel = '<label for="carNumber">Number</label>';
-    let driverLabel = '<label for="carDriver">Driver</label>';
+    let numberLabel = '<label for="carNumber">{{__('car.number')}}</label>';
+    let driverLabel = '<label for="carDriver">{{__('car.driver')}}</label>';
     $("#addNewCarField").click(function () {
         let newInputField = '<div class="form-group carInput">'+
                     '<div class="row">'+
