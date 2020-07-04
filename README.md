@@ -4,7 +4,7 @@
 
 ## [Тестовое задание на позицию junior PHP.](https://github.com/waspmax1/cloud8020-junior_test)
 
-Упровление автопарками и автомобилями, прикрепленных к ним
+Управление автопарками и автомобилями, прикрепленных к ним
 
 ## [Демо](https://autoparks.herokuapp.com/)
 
@@ -13,7 +13,7 @@
 ### пароль: supershield
 
 * Установка:
-  * `make install`
-  * `make setup`
+  * `$ make install`
+  * `$ make setup`
 
-Сделать пользователя менеджером: `php artisan role:manager {email}`
+Сделать пользователя менеджером: `$ php artisan role:manager {email}`
