@@ -7,7 +7,7 @@
     <table class="table w-50 mx-auto">
         <thead class="thead-light">
           <tr>
-            <th scope="col">{{ __('autoparks.autoparks') }}</th>
+            <th scope="col">{{ __('autopark.autoparks') }}</th>
           </tr>
         </thead>
         <tbody>

@@ -44,7 +44,7 @@
                         <form method="POST" action="{{route('manager.autoparks.destroy', $autopark)}}">
                             @method('DELETE')
                             @csrf
-                            <button type="submit" class="btn btn-danger" onclick="return confirm(__('app.sure'))" href="{{route('manager.autoparks.destroy', $autopark)}}"><i class="fa fa-trash"></i></button>
+                            <button type="submit" class="btn btn-danger" onclick="return confirm({{json_encode(__('app.sure'))}})" href="{{route('manager.autoparks.destroy', $autopark)}}"><i class="fa fa-trash"></i></button>
                         </form>
                     </div>
                 </td>
