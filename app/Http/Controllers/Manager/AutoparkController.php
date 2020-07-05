@@ -46,7 +46,7 @@ class AutoparkController extends Controller
             'work_hours' => $request->input('hours')
         ]);
 
-        if ($request->input('cars')) {
+        if (!empty($request->input('cars'))) {
             foreach ($request->input('cars') as $car) {
                 $newCar = Car::firstOrCreate(
                     ['number' => $car['number']],

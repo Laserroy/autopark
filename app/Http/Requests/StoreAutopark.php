@@ -24,11 +24,11 @@ class StoreAutopark extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|max:256',
+            'name' => 'required|string|max:256|unique:App\Autopark,name',
             'address' => 'required|string|max:256',
             'hours' => ['nullable','regex:/^(2[0-3]|[01]?[0-9])-(2[0-3]|[01]?[0-9])$/'],
-            'cars.*.number' => 'required|unique:App\Car,number',
-            'cars.*.driver' => 'required'
+            'cars.*.number' => 'filled|required|unique:App\Car,number',
+            'cars.*.driver' => 'filled|required'
         ];
     }
 }
