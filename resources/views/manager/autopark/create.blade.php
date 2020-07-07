@@ -80,7 +80,6 @@
     $(window).on('load', function () {
         $(".btn-danger").each(function (index) {
             $("#" + index).on('click', function () {
-            alert(index);
             $(this).parent().parent().parent().remove();
 	        });
         });
@@ -109,7 +108,6 @@
         $(newInputField).insertBefore($("#addNewCarField"));
 
         $("#" + counter).on('click', function () {
-            alert(counter);
             $(this).parent().parent().parent().remove();
             counter--;
 	    });
