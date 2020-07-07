@@ -42,7 +42,7 @@
                 @if(old('cars'))
                     @foreach(old('cars') as $oldCar)
                     <div class="form-group carInput">
-                        <div class="row">
+                        <div class="row align-items-end">
                             <div class="col">
                                 <label for="carNumber">{{__('car.number')}}</label>
                                 <input type="text"
@@ -76,8 +76,15 @@
     </div>
 </div>
 <script type="text/javascript">
-
     let counter = $(".carInput").length !== 0 ? $(".carInput").length : 0;
+    $(window).on('load', function () {
+        $(".btn-danger").each(function (index) {
+            $("#" + index).on('click', function () {
+            alert(index);
+            $(this).parent().parent().parent().remove();
+	        });
+        });
+    });
     $("#addNewCarField").click(function () {
         counter++;
         let newInputField = `<div class="form-group carInput">
@@ -94,7 +101,7 @@
                             <input type="text" name="cars[${counter}][driver]" class="@error('cars[${counter}][driver]') is-invalid @enderror form-control" aria-describedby="driverHelp">
                         </div>
                         <div class="col">
-                            <button type="button" id="${counter}" class="btn btn-danger align-bottom"><i class="fa fa-minus" aria-hidden="true"></i>
+                            <button type="button" id="${counter}" class="btn btn-danger"><i class="fa fa-minus" aria-hidden="true"></i>
                             </button>
                         </div>
                     </div>
@@ -106,8 +113,6 @@
             $(this).parent().parent().parent().remove();
             counter--;
 	    });
-        });
-
-
+    });
 </script>
 @endsection
