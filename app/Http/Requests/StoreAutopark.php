@@ -27,7 +27,7 @@ class StoreAutopark extends FormRequest
             'name' => 'required|string|max:256|unique:App\Autopark,name',
             'address' => 'required|string|max:256',
             'hours' => ['nullable','regex:/^(2[0-3]|[01]?[0-9])-(2[0-3]|[01]?[0-9])$/'],
-            'cars.*.number' => 'filled|required|unique:App\Car,number',
+            'cars.*.number' => 'filled|min:6|max:10|required|unique:App\Car,number',
             'cars.*.driver' => 'filled|required'
         ];
     }

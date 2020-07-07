@@ -28,7 +28,7 @@ class UpdateAutopark extends FormRequest
             'name' => 'required|string|max:256',
             'address' => 'required|string|max:256',
             'hours' => ['nullable', 'regex:/^(2[0-3]|[01]?[0-9])-(2[0-3]|[01]?[0-9])$/'],
-            'newCars.*.number' => ['required', 'distinct', Rule::unique('cars', 'number')],
+            'newCars.*.number' => ['required', 'min:6', 'max:10', 'distinct', Rule::unique('cars', 'number')],
             'newCars.*.driver' => 'required',
             'updatedCars.*.driver' => 'required'
         ];
@@ -40,7 +40,7 @@ class UpdateAutopark extends FormRequest
                 $updatedCarsNumbers[] = $val['number'];
                 $rules['updatedCars.' .
                     $key .
-                    '.number'] = ['required', 'distinct', 'unique:cars,number,' . $val['id']];
+                    '.number'] = ['required', 'min:6', 'max:10','distinct', 'unique:cars,number,' . $val['id']];
             }
         }
 
