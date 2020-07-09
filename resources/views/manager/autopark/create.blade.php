@@ -67,7 +67,8 @@
                     </div>
                     @endforeach
                 @endif
-                <button type="button" id="addNewCarField" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i>
+                <form-car-input></form-car-input>
+                <button type="button" v-on:click="removeCarInput" id="addNewCarField" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i>
                 </button>
                 <button type="submit" class="btn btn-primary float-right">
                     {{ __('autopark.save') }}</button>
@@ -75,42 +76,5 @@
         </div>
     </div>
 </div>
-<script type="text/javascript">
-    let counter = $(".carInput").length !== 0 ? $(".carInput").length : 0;
-    $(window).on('load', function () {
-        $(".btn-danger").each(function (index) {
-            $("#" + index).on('click', function () {
-            $(this).parent().parent().parent().remove();
-	        });
-        });
-    });
-    $("#addNewCarField").click(function () {
-        counter++;
-        let newInputField = `<div class="form-group carInput">
-                    <div class="row align-items-end">
-                        <div class="col">
-                            <label for="carNumber">{{__('car.number')}}</label>
-                            <input type="text"
-                                    name="cars[${counter}][number]"
-                                    class="@error('cars[${counter}][number]') is-invalid @enderror form-control"
-                                    aria-describedby="numberHelp">
-                        </div>
-                        <div class="col">
-                            <label for="carDriver">{{__('car.driver')}}</label>
-                            <input type="text" name="cars[${counter}][driver]" class="@error('cars[${counter}][driver]') is-invalid @enderror form-control" aria-describedby="driverHelp">
-                        </div>
-                        <div class="col">
-                            <button type="button" id="${counter}" class="btn btn-danger"><i class="fa fa-minus" aria-hidden="true"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>`;
-        $(newInputField).insertBefore($("#addNewCarField"));
 
-        $("#" + counter).on('click', function () {
-            $(this).parent().parent().parent().remove();
-            counter--;
-	    });
-    });
-</script>
 @endsection

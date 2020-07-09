@@ -16,7 +16,6 @@
                     </div>
                 @endif
                 <h1>{{ __('car.car') }}</h1>
-                <example-component></example-component>
                 <div class="form-group">
                   <label for="carNumber">{{ __('car.number') }}</label>
                   <input type="text" name="number" value="{{ old('number') }}" class="form-control" aria-describedby="nameHelp">
